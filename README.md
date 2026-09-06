@@ -1,5 +1,8 @@
 # 1Fi Marketplace
 
+**Live demo:** https://1fi-marketplace-omega.vercel.app
+**API:** https://onefi-marketplace-api-m6ex.onrender.com
+
 A full-stack "1Fi Marketplace" section built for the 1Fi SDE Intern assignment — extending the existing Shop page with Top Brands, Nearby Stores, and a fully implemented Marketplace tab for browsing EMI-eligible products backed by mutual funds.
 
 ## Overview
