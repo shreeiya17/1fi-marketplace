@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { PhoneShell } from "./components/PhoneShell";
 import { Shop } from "./pages/Shop";
+import { ProductDetailPage } from "./pages/ProductDetail";
 
 function Placeholder({ label }: { label: string }) {
   return (
@@ -15,6 +16,7 @@ export default function App() {
     <PhoneShell>
       <Routes>
         <Route path="/" element={<Shop />} />
+        <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="*" element={<Placeholder label="Not found" />} />
       </Routes>
     </PhoneShell>
