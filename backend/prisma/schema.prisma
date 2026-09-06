@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// A sellable product, e.g. "iPhone 17 Pro".
+// Price/MRP live here at the base level; individual variants can
+// override price via `priceDelta` (e.g. more storage costs more).
+model Product {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  name        String
+  brand       String
+  category    String    @default("smartphone")
+  description String
+  imageUrl    String
+  mrp         Int // whole rupees
+  price       Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  variants Variant[]
+  emiPlans EmiPlan[]
+
+  @@map("products")
+}
+
+enum VariantType {
+  COLOR
+  STORAGE
+}
+
+// A purchasable configuration of a product, e.g. "256GB" or "Cosmic Orange".
+// priceDelta is added to the parent product's price when this variant is selected.
+model Variant {
+  id         String      @id @default(cuid())
+  productId  String
+  type       VariantType
+  label      String // e.g. "256GB", "Titanium Blue"
+  value      String // machine-friendly value, e.g. "256gb", "titanium-blue"
+  priceDelta Int         @default(0)
+  swatchHex  String? // for COLOR variants, used to render a color dot
+  isDefault  Boolean     @default(false)
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([productId, type, value])
+  @@map("variants")
+}
+
+// One EMI option for a product, backed by a mutual fund investment plan.
+// monthlyAmount is pre-computed at seed time from price + tenure + interestRate
+// so the API never has to trust client-supplied numbers.
+model EmiPlan {
+  id             String   @id @default(cuid())
+  productId      String
+  tenureMonths   Int
+  interestRate   Float // e.g. 0, 10.5
+  monthlyAmount  Int
+  cashbackAmount Int      @default(0)
+  fundedBy       String   @default("Mutual Fund SIP")
+  createdAt      DateTime @default(now())
+
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("emi_plans")
+}
