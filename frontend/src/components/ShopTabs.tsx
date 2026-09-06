@@ -13,7 +13,7 @@ interface Props {
 
 export function ShopTabs({ active, onChange }: Props) {
   return (
-    <div className="flex gap-2 overflow-x-auto px-5 pb-1" role="tablist" aria-label="Shop sections">
+    <div className="flex gap-6 overflow-x-auto border-b border-line px-5" role="tablist" aria-label="Shop sections">
       {TABS.map((tab) => {
         const isActive = tab.key === active;
         return (
@@ -22,10 +22,8 @@ export function ShopTabs({ active, onChange }: Props) {
             role="tab"
             aria-selected={isActive}
             onClick={() => onChange(tab.key)}
-            className={`shrink-0 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
-              isActive
-                ? "border-brand bg-brand text-white"
-                : "border-line bg-surface text-muted hover:border-brand/40"
+            className={`shrink-0 border-b-2 pb-3 text-sm font-semibold transition-colors ${
+              isActive ? "border-brand text-brand" : "border-transparent text-muted"
             }`}
           >
             {tab.label}

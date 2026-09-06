@@ -5,16 +5,16 @@
   --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
 
-  --color-canvas: #f4f6f5;
+  --color-canvas: #f5f4fa;
   --color-surface: #ffffff;
-  --color-ink: #10201b;
-  --color-muted: #5c6b65;
-  --color-line: #e2e8e5;
-  --color-brand: #0f7a5c;
-  --color-brand-strong: #0b5e46;
-  --color-brand-soft: #e2f2ec;
-  --color-thrive: #0f7a5c;
-  --color-thrive-soft: #e2f2ec;
+  --color-ink: #1a1625;
+  --color-muted: #6b6478;
+  --color-line: #e6e3ee;
+  --color-brand: #6d4de6;
+  --color-brand-strong: #5636c9;
+  --color-brand-soft: #ece7fb;
+  --color-thrive: #12805c;
+  --color-thrive-soft: #e4f4ee;
   --color-accent: #b4801a;
   --color-accent-soft: #faf1e0;
 }
