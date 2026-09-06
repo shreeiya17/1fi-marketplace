@@ -2,6 +2,7 @@ import { useState } from "react";
 import { AppBar } from "../components/AppBar";
 import { BottomNav } from "../components/BottomNav";
 import { EmptyState } from "../components/EmptyState";
+import { MarketplaceGrid } from "../components/MarketplaceGrid";
 import { ShopTabs } from "../components/ShopTabs";
 import type { ShopTab } from "../components/ShopTabs";
 
@@ -22,11 +23,7 @@ export function Shop() {
         {tab === "nearby-stores" && (
           <EmptyState title="Nearby Stores is on its way" description="We'll show partner stores near you once this ships." />
         )}
-        {tab === "marketplace" && (
-          <div className="flex flex-1 items-center justify-center">
-            <p className="text-sm text-muted">Marketplace grid goes here</p>
-          </div>
-        )}
+        {tab === "marketplace" && <MarketplaceGrid />}
       </div>
 
       <BottomNav active="shop" />

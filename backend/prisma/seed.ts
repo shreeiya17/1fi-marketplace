@@ -32,7 +32,7 @@ const PRODUCTS = [
     brand: "Apple",
     description:
       "Apple's flagship Pro model with the A19 Pro chip, titanium frame, and a 48MP Pro camera system.",
-    imageUrl: "https://images.unsplash.com/photo-1592286927505-1def25115481?auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1758327059164-396c3602b8f5?auto=format&fit=crop&w=800&q=80",
     mrp: 134900,
     price: 127400,
     variants: [
